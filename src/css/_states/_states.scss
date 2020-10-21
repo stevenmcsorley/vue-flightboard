@@ -1,0 +1,83 @@
+//.hidden{
+//  display:none;
+//}
+//.dev-warn{
+//  color:$warningColour;
+//  font-size: $baseUnit * 2 - 2;
+//}
+//
+//#dev-provisioning-table > tbody > tr.highwarning td {
+//  background: $dangerAccentColour !important;
+//  color: white;
+//}
+//
+//#dev-provisioning-table > tbody > tr.mediumwarning td{
+//  background: $warningAccentColour !important;
+//  color: white;
+//}
+//
+//#dev-provisioning-table > tbody tr td {
+//  transition: all 0.4s ease-in-out;
+//}
+//
+//#dev-provisioning-table > tbody tr td:hover {
+//  color: black;
+//  cursor: pointer;
+//  background: rgba(255, 255, 255, 0.36) !important;
+//}
+//
+//.operational {
+//  color: #88B898;
+//  justify-self: right;
+//}
+//
+//.partial_outage {
+//  color: #EAC645;
+//  justify-self: right;
+//  // yellow warning
+//}
+//
+//.degraded_performance {
+//  color: #EAC645;
+//  justify-self: right;
+//  // yellow warning
+//}
+//
+//.major_outage {
+//  color: #B3585C;
+//  justify-self: right;
+//  // red cross
+//}
+//
+//.under_maintenance {
+//  color: #B3585C;
+//  justify-self: right;
+//  // red cross
+//}
+//
+//
+//.admin-company-header .status-closed {
+//  background: #d9534f;
+//  border: 1px solid #AC3C38;
+//}
+//
+//.admin-company-header .status-open {
+//  background: $primary-color-hard;
+//  border: 1px solid $secondary-color-hard;
+//  color:$baseWhite;
+//}
+//
+//.admin-company-header .status-barred {
+//  background: #466277;
+//  border: 1px solid #364B5C;
+//}
+//
+//.admin-company-header .status-barred-suspended {
+//  background: #77466B;
+//  border: 1px solid #5F3856;
+//}
+//
+//.admin-company-header .status-testing {
+//  background: #51626f;
+//  border: 1px solid #51626f;
+//}

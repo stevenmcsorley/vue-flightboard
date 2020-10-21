@@ -1,0 +1,198 @@
+//.#{$prefix}l-main-container {
+//  @include grid-offset(240px, 100%, false);
+//
+//  section[role="main"] {
+//    background: $backgroundColour;
+//    margin-top: 8px;
+//    margin-left:0px;
+//    @include breakpoint(xs) {
+//      width: 100%;
+//      background: $backgroundColour;
+//    }
+//  }
+//
+//  aside[role="sidebar"] {
+//
+//    height: 100vh;
+//    width: 240px;
+//    position: relative;
+//
+//    @include breakpoint(xs) {
+//      min-height: 50px;
+//      width: 100%;
+//      position: relative;
+//      margin:0;
+//      border-radius:0px;
+//    }
+//  }
+//}
+
+//html {
+//  height: 100%;
+//  font-family: sans-serif;
+//}
+//body {
+//  height: 100%;
+//  overflow: hidden;
+//  margin: 0px;
+//  display: flex;
+//}
+//
+//.dev-l-main-container
+//{
+//  @include grid-offset(15%, 85%, false);
+//  height: 100%;
+//  width: 100%;
+//  overflow: hidden;
+//}
+//.column {
+//  height: 100%;
+//  display: flex;
+//  flex-direction: column;
+//}
+//#left {
+//  flex-shrink: 0;
+//  background-color: white;
+//  display: flex;
+//  flex-direction: column;
+//
+//
+//}
+//#right {
+//  background-color: #f3f3f3;
+//}
+//.top-left {
+//  flex-shrink: 0;
+//  background-color: #333;
+//  color: white;
+//}
+//.top-right {
+//  //display: inline-flex;
+//  //flex-shrink: 0;
+//  background: $primary-color-hard;
+//  color: white;
+//  //padding: 20px;
+//}
+//.bottom {
+//  flex-grow: 1;
+//  overflow-y: auto;
+//}
+//
+
+.dev-grid-main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @include grid-offset(18%, 82%, false);
+
+  @include breakpoint(xs) {
+    & > :nth-child(1) {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+  }
+
+}
+
+.wrapper{
+  position: relative;
+  max-width:960px;
+  margin:0 auto;
+}
+
+
+.dev-sidebar-container {
+  display: inline-block;
+  //height: 100vh;
+  max-width: $baseUnit * 30;
+  @include breakpoint(xs) {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+.#{$prefix}grid-wrapper {
+  &--1 {
+    @include flexbox(1, 'article', true, 8, flex, column);
+
+    &__table {
+      @include flexbox(1, 'div', true, 8, flex, column);
+    }
+
+    &__div {
+      @include flexbox(1, 'div', true, 8, flex, column);
+    }
+  }
+
+  &--2 {
+    @include flexbox(2, 'div', true, 8, flex, row);
+
+    &--column {
+      @include flexbox(2, 'article', true, 8, flex, column);
+
+    }
+    &--default {
+      @include flexbox(2, 'div', true, 8, flex, column);
+
+    }
+
+    &__buttons {
+      @include flexbox(2, 'div', true, 8, block, column);
+    }
+  }
+
+  &--3 {
+    @include flexbox(3, 'div', true, 8, flex, column);
+  }
+
+  &__searchbar {
+
+    &--2 {
+      //@include flexbox(2, 'div',false, 8, flex, row);
+      @include grid-offset(25%, 75%, true);
+    }
+  }
+
+  &--6 {
+    @include flexbox(6, 'article', true, 8, flex, column);
+  }
+}
+
+.btn-offset-6-4 {
+
+  @include grid-offset(50%, 50%, true);
+
+  & > * {
+    //padding:16px;
+
+  }
+}
+
+.#{$prefix}grid-wrapper-offset {
+
+  &--5-5 {
+    @include grid-offset(50%, 50%, true);
+  }
+}
+
+.dev-hide-small {
+  @include breakpoint(xs) {
+    display: none;
+  }
+}
+
+.dev-hide-medium {
+@include breakpoint(xs) {
+
+    display: none;
+  }
+}
+
+.c3 svg
+{
+  width:100%;
+}
+
+

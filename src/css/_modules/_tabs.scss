@@ -1,0 +1,71 @@
+//.dev-tabs {
+//  display: flex;
+//  flex-direction: row;
+//  flex-wrap: wrap;
+//
+//
+//  &.dev-tabs-full-width {
+//    width: 100%;
+//  }
+//
+//  a {
+//    display: block;
+//    padding: $baseUnit $baseUnit * 2;
+//    user-select: none;
+//  }
+//}
+//
+//.dev-tabs {
+//
+//  &.dev-tabs-full-width {
+//    a {
+//      border: none;
+//      border-bottom: 1px solid $tabBarBorderColour;
+//    }
+//  }
+//
+//  a {
+//    color: $lightFontColour;
+//
+//    &:nth-child(n+2) {
+//      border-left: none;
+//    }
+//
+//    &:hover {
+//      border-bottom: 1px solid $sidebarHighlightColour;
+//      color: $secondaryFontColour;
+//    }
+//
+//    &:active, &:target {
+//      border-bottom: 1px solid $sidebarHighlightColour;
+//      color: $secondaryFontColour;
+//    }
+//  }
+//}
+//
+//
+//.dev-tabs {
+//  div {
+//    padding: 8px 8px;
+//    border-bottom: 1px solid lighten($color-light, 30%);
+//    transition: all ease-in-out 0.3s;
+//    color: $color-light;
+//    font-size: 14px;
+//    &:hover {
+//      border-bottom: 1px solid $color-darker;
+//      cursor: pointer;
+//      color: $color-darker;
+//    }
+//  }
+//  .active-device-nav {
+//    border-bottom: 1px solid $color-dark;
+//    color: $color-darker;
+//  }
+//}
+//
+//.dev_device_tab {
+//  visibility: hidden;
+//  transition: all ease-in-out 0.7s;
+//}
+//
+//

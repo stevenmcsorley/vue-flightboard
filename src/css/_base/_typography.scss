@@ -1,0 +1,17 @@
+//@font-face {
+//  font-family: 'Avenir';
+//  src: url('../fonts/AvenirNextLTPro-Regular.ttf');
+//  src: url('../fonts/AvenirNextLTPro-Regular.eot') format('eot'),
+//  url('../fonts/AvenirNextLTPro-Regular.woff') format('woff'),
+//  url('../fonts/AvenirNextLTPro-Regular.ttf') format('truetype'),
+//  url('../fonts/AvenirNextLTPro-Regular.svg') format('svg');
+//}
+
+.#{$prefix}header-title {
+  font-weight: 200;
+}
+
+h3
+{
+  font-size: 14px;
+}

@@ -1,0 +1,96 @@
+.#{$prefix}card-base {
+  background: $elementBackgroundColour;
+  box-shadow: $box-shadow-1;
+  border-radius: 2px;
+
+  &--cyan
+  {
+    background: #00ffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #00ffff 0%, #00d2dd 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #00ffff 0%,#00d2dd 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #00ffff 0%,#00d2dd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#00d2dd',GradientType=0 ); /* IE6-9 */
+  }
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--dashboard-stock{
+    border-bottom: 4px solid #337ab7;
+  }
+
+  &--dashboard-active{
+    border-bottom: 4px solid #5cb85c;
+  }
+
+  &--dashboard-online{
+    border-bottom: 4px solid #93278F;
+  }
+
+  &--dashboard-transferring{
+    border-bottom: 4px solid #FF968D;
+  }
+
+  &--dashboard-usage{
+    border-bottom: 4px solid #F2673A;
+  }
+
+  &--dashboard-monitoring{
+    border-bottom: 4px solid #CC2127;
+  }
+
+  &--clean {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  &--bunker-dial{
+    border:3px solid rgb(100, 100, 100);
+    //box-shadow: #3E423A 4px 4px 4px;
+    position: relative;
+
+    .inner{
+      position: relative;
+      border:8px solid rgb(121, 133, 131);
+      box-shadow: inset rgba(121, 133, 131,0.4) 0px 0px 22px 10px;
+      margin:0px;
+      z-index:996;
+      
+background: rgba(255,255,255,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+    }
+  }
+
+  &__header {
+    border-bottom: 1px solid $backgroundColour;
+    display: flex;
+    align-items: center;
+  }
+
+  &__body {
+    background: transparent;
+
+    &--column{
+      flex-direction: column;
+    }
+
+    &--grow{
+      flex-grow: 1;
+    }
+  }
+
+  &__footer {
+
+    &--row{
+      flex-direction: row;
+    }
+
+  }
+}

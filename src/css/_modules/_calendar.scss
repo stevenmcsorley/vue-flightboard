@@ -1,0 +1,70 @@
+
+.qs-datepicker
+{
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  color:$primary-color-hard;
+  box-shadow:$box-shadow-level-3;
+}
+
+
+.qs-datepicker .qs-controls
+{
+  border:1px solid $primary-color-light!important;
+  background: $primary-color-hard!important;
+  color:white;
+}
+.qs-datepicker .qs-arrow.qs-right:after
+{
+  border-left-color: white;
+}
+
+.qs-datepicker .qs-arrow.qs-left:after
+{
+  border-right-color: white;
+}
+
+.qs-datepicker .qs-arrow:hover.qs-left:after
+{
+  border-right-color:$primary-color-light;
+}
+
+.qs-datepicker .qs-arrow:hover.qs-right:after
+{
+  border-left-color:$primary-color-light;
+}
+
+.qs-datepicker .qs-square.qs-day
+{
+  font-weight:200;
+  color: $primary-color-hard;
+}
+
+.qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):hover
+{
+  background:$primary-color-light;
+  color:white;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+{
+  color:$primary-color-light;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
+{
+  background:$primary-color-light;
+  color:white;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight
+{
+  background: $primary-color-hard;
+  color:white;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus
+{
+  border:1px solid $primary-color-light;
+  background: $primary-color-hard;
+  color:white;
+}

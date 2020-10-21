@@ -1,0 +1,32 @@
+#breadcrumbs {
+  font-size: 14px;
+  padding-top: 14px;
+  li {
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 4px;
+    text-transform: capitalize;
+    &:nth-child(1) {
+      margin-left: -4px;
+    }
+    a {
+      transition: all ease-in-out 0.3s;
+      color: $primary-color-hard;
+    }
+
+    a:hover {
+      color: $primary-color-soft;
+
+    }
+  }
+  li:last-child {
+    //font-weight:bold!important;
+    color:$primary-color-hard;
+  }
+  .breadcrumbCurrent-title {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+
+  }
+}

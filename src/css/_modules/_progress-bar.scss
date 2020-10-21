@@ -1,0 +1,115 @@
+.device-progress-information-container {
+  font-size: 14px;
+  position: relative;
+}
+
+.device-progress-bar-values-container {
+  display: flex;
+  min-width:100%;
+  font-size:12px;
+
+
+  div {
+    -webkit-box-flex: 1;
+    width: 17%;
+    display: inline-block;
+
+    p
+    {
+      text-align:center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  div:nth-child(5) {
+    width: 16% !important;
+  }
+  div:nth-child(6) {
+    width: 16% !important;
+  }
+
+}
+
+.dev-device-progress-bar {
+  display: inline-block;
+  height: $baseUnit;
+}
+
+#device-connectivity-progress[value] {
+  width: 68%;
+}
+
+#device-barred-bar[value] {
+  width: 16%;
+  margin-left: -4px;
+}
+
+#device-terminated-bar
+{
+  width: 16%;
+  margin-left: -4px;
+}
+
+progress {
+  background-color: lightgrey!important;
+}
+progress::-webkit-progress-value {
+  background-color: lightgrey;
+}
+progress::-moz-progress-bar {
+  background-color: lightgrey;
+}
+
+#device-connectivity-progress[value]::-webkit-progress-value
+{
+  background:green;
+}
+progress#device-connectivity-progress[value]::-moz-progress-bar
+{
+  background:green;
+}
+progress#device-connectivity-progress[value]
+{
+  background:green;
+}
+#device-barred-bar[value]::-webkit-progress-value
+{
+  background:red;
+}
+progress#device-barred-bar[value]
+{
+  background:red;
+}
+progress#device-barred-bar[value]::-moz-progress-bar
+{
+  background:red;
+}
+
+#device-terminated-bar[value]::-webkit-progress-value
+{
+  background:red;
+}
+progress#device-terminated-bar[value]::-moz-progress-bar
+{
+  background:red;
+}
+#device-terminated-bar[value]
+{
+  background:red;
+}
+
+.device-progress-bar-values-container
+{
+
+  div::before
+  {
+    content: "|";
+    position: absolute;
+    top: 27px;
+    margin-left: -1px;
+    color: #fffcfc;
+    font-size: 8px;
+  }
+}
