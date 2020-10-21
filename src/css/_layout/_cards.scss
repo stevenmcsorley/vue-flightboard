@@ -3,42 +3,12 @@
   box-shadow: $box-shadow-1;
   border-radius: 2px;
 
-  &--cyan
-  {
-    background: #00ffff; /* Old browsers */
-    background: -moz-linear-gradient(top, #00ffff 0%, #00d2dd 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #00ffff 0%,#00d2dd 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #00ffff 0%,#00d2dd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#00d2dd',GradientType=0 ); /* IE6-9 */
-  }
 
   &--column {
     flex-direction: column;
   }
 
-  &--dashboard-stock{
-    border-bottom: 4px solid #337ab7;
-  }
 
-  &--dashboard-active{
-    border-bottom: 4px solid #5cb85c;
-  }
-
-  &--dashboard-online{
-    border-bottom: 4px solid #93278F;
-  }
-
-  &--dashboard-transferring{
-    border-bottom: 4px solid #FF968D;
-  }
-
-  &--dashboard-usage{
-    border-bottom: 4px solid #F2673A;
-  }
-
-  &--dashboard-monitoring{
-    border-bottom: 4px solid #CC2127;
-  }
 
   &--clean {
     background: transparent;

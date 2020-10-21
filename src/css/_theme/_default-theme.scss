@@ -29,33 +29,6 @@ body {
 
   }
 
-
-  .dev-sidebar-menu-group {
-    border-left: 4px solid $secondary-color-light;
-
-    &.dev-expanded {
-      background: darken($primary-color-soft, 20%);
-      color: white;
-    }
-
-    .dev-sidebar-sub-menu-item {
-      background: $baseWhite;
-      color: $primary-color-hard;
-
-
-
-      &:hover {
-        background: lighten($primary-color-soft, 20%);
-        color: $baseWhite;
-      }
-    }
-
-  }
-
-
-
-
-
 }
 
 
