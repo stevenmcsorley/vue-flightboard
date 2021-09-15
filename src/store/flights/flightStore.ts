@@ -2,10 +2,8 @@ import store from '../index'
 import {
   Module,
   VuexModule,
-  getModule,
   Mutation,
-  Action,
-  MutationAction
+  Action
 } from 'vuex-module-decorators'
 @Module({
   dynamic: true,

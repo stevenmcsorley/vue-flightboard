@@ -1,46 +1,12 @@
 <template>
   <div>
-    <!-- <article>
-      <select v-model="direction">
-        <option disabled value="">Please select one</option>
-        <option value="arrival">Arrivals</option>
-        <option value="departure">Departures</option>
-      </select>
-      <select v-model="arivalCode" v-if="direction === 'arrival'">
-        <option disabled value="">Please select one</option>
-        <option value="iataCode">iataCode</option>
-        <option value="icaoCode">icaoCode</option>
-      </select>
-      <select v-model="departureCode" v-if="direction === 'departure'">
-        <option disabled value="">Please select one</option>
-        <option value="iataCode">iataCode</option>
-        <option value="icaoCode">icaoCode</option>
-      </select>
-    </article>
-    <article>
-      <select v-model="statusSelect" v-on:change="findFlightStatus()">
-        <option disabled value="">Status</option>
-        <option value="started">started</option>
-        <option value="en-route">en-route</option>
-        <option value="landed">landed</option>
-        <option value="unknown">unknown</option>
-      </select>
-    </article>
-    <input
-      type="text"
-      v-model="searchQuery"
-      v-if="arivalCode || departureCode"
-    />
-    <button v-on:click="findFlight()" v-if="arivalCode || departureCode">
-      Search
-    </button>-->
     <div
       class="dev-card-base dev-u-padding-default"
       style="background:#FFFF03;color:black;"
     >
       <div class="dev-grid-wrapper__article--row--3">
         <article>
-          <h4 v-if="airport" style="color:black;font-size:24px;">
+          <h4 style="color:black;font-size:24px;">
             {{ this.searchedCity.airport }}
           </h4>
         </article>
@@ -103,11 +69,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import request from 'axios'
 
 import { getModule } from 'vuex-module-decorators'
-// import WeatherStore from "../store/weatherStore/WeatherStore";
 import FlightStore from '../store/flights/flightStore'
+import { FlightsTableDeparture } from '../interfaces/IFlightTables'
 import moment, { Moment } from 'moment'
 
 import fetchFlightTimeTables from '../apiRepo/flightsApiRepo'
@@ -132,11 +97,9 @@ export default class Home extends Vue {
   private departureCode = '';
   private searchQuery = '';
   private statusSelect = '';
-  private flightTables = [];
+  private flightTables: FlightsTableDeparture[] = [];
   private airport = '';
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private allcities: any = '';
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private allAirports: any = [];
   private columns = [
     {
@@ -220,10 +183,7 @@ export default class Home extends Vue {
   ];
 
   private async created () {
-    // await this.getFlightData();
-    // await this.getFlightTimeTables();
     await this.fetchCities()
-    // await this.findCity("AMS");
     await this.processAllAirports()
   }
 
@@ -232,7 +192,14 @@ export default class Home extends Vue {
   }
 
   get searchedCity () {
-    return this.findLocalCity(this.airport.toUpperCase())
+    if (this.airport) {
+      return this.findLocalCity(this.airport.toUpperCase())
+    } else {
+      return {
+        airport: '',
+        city: ''
+      }
+    }
   }
 
   get theTime () {
@@ -240,63 +207,13 @@ export default class Home extends Vue {
   }
 
   private onSearchChange (event: any) {
+    if (event.key !== 'Enter') {
+      return false
+    }
+
     if (event.key === 'Enter') {
       this.getFlightTimeTables()
     }
-  }
-
-  private async getFlightData () {
-    if (!this.FlightStore.getFlights.flightsData) {
-      const apikey = 'a3021b-8a3f53'
-      try {
-        const flights =
-          'https://aviation-edge.com/v2/public/flights?key=a3021b-8a3f53'
-        const response = await request.get(flights)
-        const res = response.data
-        this.FlightStore.updateFlights({ flightsData: res })
-        console.log('api', res)
-        this.flightDataSet = res
-      } catch (error) {
-        throw new Error(error)
-      }
-    } else {
-      console.log('stored', this.FlightStore.getFlights)
-      this.flightDataSet = this.FlightStore.getFlights
-    }
-  }
-
-  private async findFlight () {
-    // console.log("search");
-    const dir = this.direction
-    const search = await this.searchQuery
-    const journeySide = this.arivalCode ? this.arivalCode : this.departureCode
-    const results = this.flightDataSet.flightsData
-    // //console.log("side", check );
-    // // let flightResults = check.filter(function(
-    // //   flight: any
-    // // ) {
-    // //   return flight.journeySide == search;
-    // // });
-    // results.map(result=>{
-    //   result.results = result.results.filter(r=>(search.includes(this.flightDataSet.flightsData.arrival.iataCode)))
-    //   return result
-    // })
-    // const result = results.filter(p => p.arrival.some(s => s.iataCode === 'SFO'))
-    const result = await results.filter(
-      (ar: { [x: string]: { [x: string]: string } }) =>
-        ar[`${dir}`][`${journeySide}`] === search
-    )
-    console.log(result)
-    // console.log("search", results);
-  }
-
-  private async findFlightStatus () {
-    console.log('fsfs')
-    const results = this.flightDataSet.flightsData
-    const flightsWithStat = await results.filter(
-      (ar: { status: string }) => ar.status === this.statusSelect
-    )
-    console.log(flightsWithStat)
   }
 
   get rows () {
@@ -313,68 +230,58 @@ export default class Home extends Vue {
         remarks: flight.status
       }
     })
-    // return this.flightTables;
   }
 
-  //   const deviceList = await this.deviceApiService.getDeviceList(
-  //   this.tokenString
-  // );
   private async getFlightTimeTables () {
     clearInterval(this.clearInt)
     this.count = 0
-    this.flightTables = []
     this.loading = true
     const flightTimeTables = await api.fetchFlightTimeTables(
       this.airport
     )
     this.flightTables = flightTimeTables
+    console.log('this.flightTables', this.flightTables)
     this.loading = false
   }
 
   private async fetchCities () {
-    // const cities =
-    //   "https://aviation-edge.com/v2/public/airportDatabase?key=a3021b-8a3f53";
-    // const response = await request.get(cities);
-    // let res = response.data;
     const res = mockAirportDB
-    // this.FlightStore.updateFlights({ flightsData: res });
-    console.log('cities', res)
     this.allcities = res
     this.FlightStore.updateCities({ citiesData: res })
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private findCity (iatacode: any) {
-    const city = this.FlightStore.getCities.citiesData
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const found = city.find(function (element: any) {
-      return element.codeIataAirport === iatacode
-    })
-    // console.log("city", found.nameCity);
-    return found.nameAirport
-  }
+  // private findCity (iatacode: any) {
+  //   const city = this.FlightStore.getCities.citiesData
+  //   const found = city.find(function (element: any) {
+  //     return element.codeIataAirport === iatacode
+  //   })
+  //   return found.nameAirport
+  // }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private findCityFromAirport (iatacode: any) {
-    const city = this.FlightStore.getCities.citiesData
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const found = city.find(function (element: any) {
-      return element.codeIataAirport === iatacode
-    })
-    return found.city
-  }
+  // private findCityFromAirport (iatacode: any) {
+  //   const city = this.FlightStore.getCities.citiesData
+  //   const found = city.find(function (element: any) {
+  //     return element.codeIataAirport === iatacode
+  //   })
+  //   return found.city
+  // }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private findLocalCity (code: any) {
     const city = this.allAirports
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const found: any | undefined = city.find(function (element: any) {
+    const found: any | undefined = city.find((element: any) => {
       return element.iata_code === code
     })
-    // console.log("city", found.name);
-    return {
-      airport: found.name,
-      city: found.municipality
+    console.log('found', found)
+    if (found !== undefined) {
+      return {
+        airport: found.name,
+        city: found.municipality
+      }
+    } else {
+      return {
+        airport: '',
+        city: ''
+      }
     }
   }
 
@@ -405,8 +312,6 @@ export default class Home extends Vue {
 
   private async processAllAirports () {
     this.allAirports = await mockAirports
-    console.log('fdss', this.allAirports)
-    console.log('cols', this.columns)
   }
 
   get isLoadedCities () {
@@ -447,8 +352,6 @@ a {
 .card {
   // justify-content: flex-start;
   width: 100%;
-}
-.card div {
 }
 .fade-enter-active,
 .fade-leave-active {

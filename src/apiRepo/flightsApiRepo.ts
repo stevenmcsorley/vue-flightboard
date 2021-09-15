@@ -4,10 +4,9 @@ import request from 'axios'
 export default {
 
   async fetchFlightTimeTables (airport: string) {
-    const url =
-          'http://aviation-edge.com/v2/public/timetable?key=a3021b-8a3f53&iataCode=' +
-          airport +
-          '&type=departure'
+    const flightType = 'departure'
+    const baseUrl = 'http://aviation-edge.com/v2/public/'
+    const url = `${baseUrl}timetable?key=${process.env.VUE_APP_API_KEY}&iataCode=${airport}&type=departure`
     const timetable = url
     const response = await request.get(timetable)
     const res = response.data
