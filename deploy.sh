@@ -1,14 +1,18 @@
 #!/usr/bin/env sh
-# abort on errors
-set -e
-# build
+set -eu
+
+REPO_URL="${REPO_URL:-https://github.com/stevenmcsorley/vue-flightboard}"
+
 npm run build
-# navigate into the build output directory
+
 cd dist
-# if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
+
+touch .nojekyll
+cp index.html 404.html
+
 git init
 git add -A
 git commit -m 'deploy'
-git push -f https://github.com/stevenmcsorley/vue-flightboard master:gh-pages
+git push -f "$REPO_URL" HEAD:gh-pages
+
 cd -

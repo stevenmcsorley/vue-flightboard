@@ -2,6 +2,16 @@
 
 A Vue 2 departures board that loads live airport timetable data, rotates through pages automatically, and can switch into a full-screen gateway board mode.
 
+## Screenshots
+
+### Live board dashboard
+
+![Live board dashboard](docs/screenshots/dashboard-board.png)
+
+### Gateway mode
+
+![Gateway mode](docs/screenshots/gateway-mode.png)
+
 ## Features
 
 - Live departures lookup by IATA airport code
@@ -36,6 +46,10 @@ npm run test:e2e
 ```
 
 The project uses Vue CLI 4, so the npm scripts already include the OpenSSL legacy flag needed for Node 20 builds.
+
+## GitHub Pages
+
+Run `npm run deploy` to build the app and publish the generated `dist` output to the root of the `gh-pages` branch.
 
 ## Current UI
 
