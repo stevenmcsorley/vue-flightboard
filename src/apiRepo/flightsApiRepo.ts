@@ -2,7 +2,7 @@ import request from 'axios'
 import { FlightsTableDeparture } from '@/interfaces/IFlightTables'
 import { normalizeAirportCode } from '@/utils/flightBoard'
 
-const API_BASE_URL = 'http://aviation-edge.com/v2/public'
+const API_BASE_URL = 'https://aviation-edge.com/v2/public'
 
 async function fetchFlightTimeTables (
   airport: string
