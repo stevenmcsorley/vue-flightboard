@@ -1,18 +1,29 @@
 import request from 'axios'
+import { FlightsTableDeparture } from '@/interfaces/IFlightTables'
+import { normalizeAirportCode } from '@/utils/flightBoard'
 
-// eslint-disable-next-line @typescript-eslint/class-name-casing
-export default {
+const API_BASE_URL = 'http://aviation-edge.com/v2/public'
 
-  async fetchFlightTimeTables (airport: string) {
-    const flightType = 'departure'
-    const baseUrl = 'http://aviation-edge.com/v2/public/'
-    const url = `${baseUrl}timetable?key=${process.env.VUE_APP_API_KEY}&iataCode=${airport}&type=departure`
-    const timetable = url
-    const response = await request.get(timetable)
-    const res = response.data
+async function fetchFlightTimeTables (
+  airport: string
+): Promise<FlightsTableDeparture[]> {
+  const airportCode = normalizeAirportCode(airport)
+  const apiKey = process.env.VUE_APP_API_KEY
 
-    console.log('api timetable', res)
-
-    return res
+  if (!airportCode) {
+    return []
   }
+
+  if (!apiKey) {
+    throw new Error('Missing VUE_APP_API_KEY')
+  }
+
+  const url = `${API_BASE_URL}/timetable?key=${apiKey}&iataCode=${airportCode}&type=departure`
+  const response = await request.get<FlightsTableDeparture[]>(url)
+
+  return Array.isArray(response.data) ? response.data : []
+}
+
+export default {
+  fetchFlightTimeTables
 }

@@ -1,4 +1,3 @@
 module.exports = {
-    publicPath: "/vue-flightboard/",
-  };
-  
+  publicPath: '/vue-flightboard/'
+}

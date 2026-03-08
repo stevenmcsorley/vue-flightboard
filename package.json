@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
+    "serve": "node --openssl-legacy-provider ./node_modules/@vue/cli-service/bin/vue-cli-service.js serve",
+    "build": "node --openssl-legacy-provider ./node_modules/@vue/cli-service/bin/vue-cli-service.js build",
+    "test:unit": "node --openssl-legacy-provider ./node_modules/@vue/cli-service/bin/vue-cli-service.js test:unit",
+    "test:e2e": "node --openssl-legacy-provider ./node_modules/@vue/cli-service/bin/vue-cli-service.js test:e2e",
     "lint": "vue-cli-service lint",
     "deploy": "sh deploy.sh"
   },
@@ -44,7 +44,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.12.0",
+    "sass": "^1.77.8",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11"
